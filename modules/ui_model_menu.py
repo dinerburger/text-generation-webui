@@ -110,6 +110,13 @@ def create_ui():
                             shared.gradio['autogptq_info'] = gr.Markdown('ExLlamav2_HF is recommended over AutoGPTQ for models derived from Llama.')
 
                         with gr.Column():
+                            with gr.Blocks():
+                                shared.gradio['cache_k_type'] = gr.Dropdown(label="cache_k_type", value=shared.args.cache_k_type, info='KV cache K type', choices=['fp16', 'q4_0', 'q4_1', 'q5_0', 'q5_1', 'q8_0', 'q8_1', 'q2_k', 'q3_k', 'q4_k', 'q5_k', 'q6_k', 'q8_k', 'bf16' ] )
+                                shared.gradio['cache_v_type'] = gr.Dropdown(label="cache_v_type", value=shared.args.cache_v_type, info='KV cache V type', choices=['fp16', 'q4_0', 'q4_1', 'q5_0', 'q5_1', 'q8_0', 'q8_1', 'q2_k', 'q3_k', 'q4_k', 'q5_k', 'q6_k', 'q8_k', 'bf16' ] )
+                                shared.gradio['cache_kv_type'] = gr.Dropdown(label="cache_kv_type", value=shared.args.cache_kv_type, info='KV cache type', choices=['fp16', 'fp8', 'q8', 'q6', 'q4'])
+                                shared.gradio['cache_quant_algo'] = gr.Dropdown(label='cache_quant_algo', value=shared.args.cache_quant_algo, info='KV cache quantization algorithm. HQQ requires additional dependencies.', choices=[('None', 'none'), 'quanto', 'hqq'])
+                                shared.gradio['cache_quant_bits'] = gr.Dropdown(label='cache_quant_bits', value=shared.args.cache_quant_bits, info='KV cache quantization bit depth. Valid options are 2 and 4.', choices=[2, 4])
+
                             shared.gradio['load_in_8bit'] = gr.Checkbox(label="load-in-8bit", value=shared.args.load_in_8bit)
                             shared.gradio['load_in_4bit'] = gr.Checkbox(label="load-in-4bit", value=shared.args.load_in_4bit)
                             shared.gradio['use_double_quant'] = gr.Checkbox(label="use_double_quant", value=shared.args.use_double_quant)

@@ -27,6 +27,8 @@ loaders_and_params = OrderedDict({
         'disable_exllama',
         'disable_exllamav2',
         'transformers_info',
+        'cache_quant_algo',
+        'cache_quant_bits',
     ],
     'llama.cpp': [
         'n_ctx',
