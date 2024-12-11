@@ -377,7 +377,7 @@ def generate_reply_HF(question, original_question, seed, state, stopping_strings
             generate_params['cache_implementation'] = 'quantized'
             generate_params['cache_config'] = {
                 'backend': shared.args.tf_cache_quant_algo.lower(),
-                'nbits': shared.args.cache_quant_bits
+                'nbits': shared.args.tf_cache_quant_bits
             }
 
     t0 = time.time()

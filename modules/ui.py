@@ -89,6 +89,8 @@ def list_model_elements():
         'num_experts_per_token',
         'lcpp_cache_type',
         'exl_cache_type',
+        'tf_cache_quant_algo',
+        'tf_cache_quant_bits',
         'autosplit',
         'enable_tp',
         'threads',
