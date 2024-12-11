@@ -49,6 +49,8 @@ settings = {
     'custom_stopping_strings': '',
     'lcpp_cache_type': 'fp16',
     'exl_cache_type': 'fp16',
+    'tf_cache_quant_algo': 'none',
+    'tf_cache_quant_bits': 4,    
     'custom_token_bans': '',
     'auto_max_new_tokens': False,
     'ban_eos_token': False,
@@ -106,8 +108,8 @@ group.add_argument('--force-safetensors', action='store_true', help='Set use_saf
 group.add_argument('--no_use_fast', action='store_true', help='Set use_fast=False while loading the tokenizer (it\'s True by default). Use this if you have any problems related to use_fast.')
 group.add_argument('--use_flash_attention_2', action='store_true', help='Set use_flash_attention_2=True while loading the model.')
 group.add_argument('--use_eager_attention', action='store_true', help='Set attn_implementation= eager while loading the model.')
-group.add_argument('--tf-cache-quant-algo', type=str, default='none', help='Which algorithm to use during cache quantization. Options are None, quanto or hqq')
-group.add_argument('--tf-cache-quant-bits', type=int, default=4, help='How many bits to utilize per KV during quantization. Valid options are 4 and 8 for Quanto, 2 and 4 for HQQ.')
+group.add_argument('--tf_cache_quant_algo', type=str, default='none', help='Which algorithm to use during cache quantization. Options are None, quanto or hqq')
+group.add_argument('--tf_cache_quant_bits', type=int, default=4, help='How many bits to utilize per KV during quantization. Valid options are 4 and 8 for Quanto, 2 and 4 for HQQ.')
 
 # bitsandbytes 4-bit
 group = parser.add_argument_group('bitsandbytes 4-bit')
