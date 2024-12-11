@@ -108,15 +108,7 @@ def create_ui():
                                 shared.gradio['compress_pos_emb'] = gr.Number(label='compress_pos_emb', value=shared.args.compress_pos_emb, precision=2, info='Positional embeddings compression factor. Should be set to (context length) / (model\'s original context length). Equal to 1/rope_freq_scale.')
 
                             shared.gradio['autogptq_info'] = gr.Markdown('ExLlamav2_HF is recommended over AutoGPTQ for models derived from Llama.')
-
-                        with gr.Column():
-                            with gr.Blocks():
-                                shared.gradio['cache_k_type'] = gr.Dropdown(label="cache_k_type", value=shared.args.cache_k_type, info='KV cache K type', choices=['fp16', 'q4_0', 'q4_1', 'q5_0', 'q5_1', 'q8_0', 'q8_1', 'q2_k', 'q3_k', 'q4_k', 'q5_k', 'q6_k', 'q8_k', 'bf16' ] )
-                                shared.gradio['cache_v_type'] = gr.Dropdown(label="cache_v_type", value=shared.args.cache_v_type, info='KV cache V type', choices=['fp16', 'q4_0', 'q4_1', 'q5_0', 'q5_1', 'q8_0', 'q8_1', 'q2_k', 'q3_k', 'q4_k', 'q5_k', 'q6_k', 'q8_k', 'bf16' ] )
-                                shared.gradio['cache_kv_type'] = gr.Dropdown(label="cache_kv_type", value=shared.args.cache_kv_type, info='KV cache type', choices=['fp16', 'fp8', 'q8', 'q6', 'q4'])
-                                shared.gradio['cache_quant_algo'] = gr.Dropdown(label='cache_quant_algo', value=shared.args.cache_quant_algo, info='KV cache quantization algorithm. HQQ requires additional dependencies.', choices=[('None', 'none'), 'quanto', 'hqq'])
-                                shared.gradio['cache_quant_bits'] = gr.Dropdown(label='cache_quant_bits', value=shared.args.cache_quant_bits, info='KV cache quantization bit depth. Valid options are 2 and 4.', choices=[2, 4])
-
+                            
                             shared.gradio['load_in_8bit'] = gr.Checkbox(label="load-in-8bit", value=shared.args.load_in_8bit)
                             shared.gradio['load_in_4bit'] = gr.Checkbox(label="load-in-4bit", value=shared.args.load_in_4bit)
                             shared.gradio['use_double_quant'] = gr.Checkbox(label="use_double_quant", value=shared.args.use_double_quant)
@@ -127,6 +119,8 @@ def create_ui():
                             shared.gradio['tensorcores'] = gr.Checkbox(label="tensorcores", value=shared.args.tensorcores, info='NVIDIA only: use llama-cpp-python compiled with tensor cores support. This may increase performance on newer cards.')
                             shared.gradio['lcpp_cache_type'] = gr.Dropdown(label="cache_type", value=shared.args.lcpp_cache_type, info='KV cache type', choices=['fp16', 'q8_0', 'q4_0'] )
                             shared.gradio['exl_cache_type'] = gr.Dropdown(label="cache_type", value=shared.args.exl_cache_type, info='KV cache type', choices=['fp16', 'fp8', 'q8', 'q6', 'q4'])
+                            shared.gradio['tf_cache_quant_algo'] = gr.Dropdown(label='tf_cache_quant_algo', value=shared.args.tf_cache_quant_algo, info='KV cache quantization algorithm. HQQ requires additional dependencies.', choices=[('None', 'none'), 'quanto', 'hqq'])
+                            shared.gradio['tf_cache_quant_bits'] = gr.Dropdown(label='tf_cache_quant_bits', value=shared.args.tf_cache_quant_bits, info='KV cache quantization bit depth. Valid options are 2 and 4.', choices=[2, 4])
                             shared.gradio['streaming_llm'] = gr.Checkbox(label="streaming_llm", value=shared.args.streaming_llm, info='(experimental) Activate StreamingLLM to avoid re-evaluating the entire prompt when old messages are removed.')
                             shared.gradio['attention_sink_size'] = gr.Number(label="attention_sink_size", value=shared.args.attention_sink_size, precision=0, info='StreamingLLM: number of sink tokens. Only used if the trimmed prompt doesn\'t share a prefix with the old prompt.')
                             shared.gradio['cpu'] = gr.Checkbox(label="cpu", value=shared.args.cpu, info='llama.cpp: Use llama-cpp-python compiled without GPU acceleration. Transformers: use PyTorch in CPU mode.')

@@ -373,10 +373,10 @@ def generate_reply_HF(question, original_question, seed, state, stopping_strings
         shared.model.save_cache()
 
     if shared.args.loader.lower() == 'transformers':
-        if shared.args.cache_quant_algo and shared.args.cache_quant_algo.lower() != 'none':
+        if shared.args.tf_cache_quant_algo and shared.args.tf_cache_quant_algo.lower() != 'none':
             generate_params['cache_implementation'] = 'quantized'
             generate_params['cache_config'] = {
-                'backend': shared.args.cache_quant_algo.lower(),
+                'backend': shared.args.tf_cache_quant_algo.lower(),
                 'nbits': shared.args.cache_quant_bits
             }
 
